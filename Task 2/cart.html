@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css" />
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <title>Read-!T, Your Cart</title>
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="navigation">
+            <div class="container">
+                <nav class="nav">
+                    <div class="nav__hamburger">
+                        <svg>
+                            <use xlink:href="./images/sprite.svg#icon-menu"></use>
+                        </svg>
+                    </div>
+
+                    <div class="nav__logo">
+                        <a href="/home.html" class="scroll-link">
+                            READ-<span style="color: #eb0028;">!</span>T
+                        </a>
+                    </div>
+
+                    <div class="nav__menu">
+                        <div class="menu__top">
+                            <span class="nav__category">READ-!T</span>
+                            <a href="#" class="close__toggle">
+                                <svg>
+                                    <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                    </div>
+
+                    <div class="nav__icons">
+                        <a id="userinfo" class="icon__item">
+                            <svg class="icon__user">
+                                <use xlink:href="./images/sprite.svg#icon-user"></use>
+                            </svg>
+                            <script>
+                                $('#userinfo').on('click', function(){
+                                    Swal.fire({
+                                        title: '<strong>Account Details</strong>',
+                                        icon: 'info',
+                                        html:
+                                            'Username:<b>Bhuwan Pandit</b>, ' +
+                                            'Password:<b>P@ssw0rd</b>, ' +
+                                            'Contact:<b>9843197848</b>',
+                                        showCloseButton: true,
+                                        showCancelButton: true,
+                                        focusConfirm: false,
+                                        confirmButtonText:
+                                            '<i class="fa fa-thumbs-up"></i> Great!',
+                                        confirmButtonAriaLabel: 'Thumbs up, great!',
+                                        
+                                        })
+                                });
+                              </script>
+                        </a>
+
+                        <a id="wrong" href="#" class="icon__item">
+                            <svg class="icon__search">
+                                <use xlink:href="./images/sprite.svg#icon-search"></use>
+                            </svg>
+                            <script>
+                                $('#wrong').on('click', function(){
+                                  Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Something went wrong!',
+                                        footer: '<b>You can not search at the moment!</b>'
+                                      })
+                                });
+                              </script>
+                        </a>
+
+                        <a href="#" class="icon__item">
+                            <svg class="icon__cart">
+                                <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
+                            </svg>
+                            <span id="cart__total">4</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="page__title-area">
+            <div class="container">
+                <div class="page__title-container">
+                    <ul class="page__titles">
+                        <li>
+                            <a href="home.html">
+                                <svg>
+                                    <use xlink:href="./images/sprite.svg#icon-home"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page__title">Cart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="section cart__area">
+            <div class="container">
+                <div class="responsive__cart-area">
+                    <form class="cart__form">
+                        <div class="cart__table table-responsive">
+                            <table width="100%" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>PRODUCT</th>
+                                        <th>NAME</th>
+                                        <th>UNIT PRICE</th>
+                                        <th>QUANTITY</th>
+                                        <th>TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="product__thumbnail">
+                                            <a href="#">
+                                                <img src="./images/book14.jpg" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="product__name">
+                                            <a href="#">The Waiting</a>
+                                            <br><br>
+                                            
+                                        </td>
+                                        <td class="product__price">
+                                            <div class="price">
+                                                <span class="new__price">NPR. 1350</span>
+                                            </div>
+                                        </td>
+                                        <td class="product__quantity">
+                                            <div class="input-counter">
+                                                <div>
+                                                    <span class="minus-btn">
+                                                        <svg>
+                                                            <use xlink:href="./images/sprite.svg#icon-minus"></use>
+                                                        </svg>
+                                                    </span>
+                                                    <input type="text" min="1" value="1" max="10" class="counter-btn">
+                                                    <span class="plus-btn">
+                                                        <svg>
+                                                            <use xlink:href="./images/sprite.svg#icon-plus"></use>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product__subtotal">
+                                            <div class="price">
+                                                <span class="new__price">NPR. 1350</span>
+                                            </div>
+                                            <a id="bin1" class="remove__cart-item" >
+                                                <svg>
+                                                    <use xlink:href="./images/sprite.svg#icon-trash"></use>
+                                                </svg>
+                                                <script>
+                                                    $('#bin1').on('click', function(){
+                                                        Swal.fire({
+                                                            title: 'Are you sure?',
+                                                            icon: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Yes, delete it!'
+                                                            }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                Swal.fire(
+                                                                'Deleted!',
+                                                                'Your file has been deleted.',
+                                                                'success'
+                                                                )
+                                                            }
+                                                            })
+                                                    });
+                                                  </script>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product__thumbnail">
+                                            <a href="#">
+                                                <img src="./images/book1.jpg" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="product__name">
+                                            <a href="#">The King of Drugs</a>
+                                            <br><br>
+                                            
+                                        </td>
+                                        <td class="product__price">
+                                            <div class="price">
+                                                <span class="new__price">NPR. 1760</span>
+                                            </div>
+                                        </td>
+                                        <td class="product__quantity">
+                                            <div class="input-counter">
+                                                <div>
+                                                    <span class="minus-btn">
+                                                        <svg>
+                                                            <use xlink:href="./images/sprite.svg#icon-minus"></use>
+                                                        </svg>
+                                                    </span>
+                                                    <input type="text" min="1" value="1" max="10" class="counter-btn">
+                                                    <span class="plus-btn">
+                                                        <svg>
+                                                            <use xlink:href="./images/sprite.svg#icon-plus"></use>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product__subtotal">
+                                            <div class="price">
+                                                <span class="new__price">NPR. 1760</span>
+                                            </div>
+                                            <a id="bin2" class="remove__cart-item">
+                                                <svg>
+                                                    <use xlink:href="./images/sprite.svg#icon-trash"></use>
+                                                </svg>
+                                                <script>
+                                                    $('#bin2').on('click', function(){
+                                                        Swal.fire({
+                                                            title: 'Are you sure?',
+                                                            icon: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Yes, delete it!'
+                                                            }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                Swal.fire(
+                                                                'Deleted!',
+                                                                'Your file has been deleted.',
+                                                                'success'
+                                                                )
+                                                            }
+                                                            })
+                                                    });
+                                                  </script>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product__thumbnail">
+                                            <a href="#">
+                                                <img src="./images/book2.jpg" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="product__name">
+                                            <a href="#">The Imperfections of Memory</a>
+                                            <br><br>
+                                            
+                                        </td>
+                                        <td class="product__price">
+                                            <div class="price">
+                                                <span class="new__price">NPR. 1750</span>
+                                            </div>
+                                        </td>
+                                        <td class="product__quantity">
+                                            <div class="input-counter">
+                                                <div>
+                                                    <span class="minus-btn">
+                                                        <svg>
+                                                            <use xlink:href="./images/sprite.svg#icon-minus"></use>
+                                                        </svg>
+                                                    </span>
+                                                    <input type="text" min="1" value="1" max="10" class="counter-btn">
+                                                    <span class="plus-btn">
+                                                        <svg>
+                                                            <use xlink:href="./images/sprite.svg#icon-plus"></use>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product__subtotal">
+                                            <div class="price">
+                                                <span class="new__price">NPR. 1750</span>
+                                            </div>
+                                            <a id="bin3" class="remove__cart-item">
+                                                <svg>
+                                                    <use xlink:href="./images/sprite.svg#icon-trash"></use>
+                                                </svg>
+                                                <script>
+                                                    $('#bin3').on('click', function(){
+                                                        Swal.fire({
+                                                            title: 'Are you sure?',
+                                                            icon: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Yes, delete it!'
+                                                            }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                Swal.fire(
+                                                                'Deleted!',
+                                                                'Your file has been deleted.',
+                                                                'success'
+                                                                )
+                                                            }
+                                                            })
+                                                    });
+                                                  </script>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="product__thumbnail">
+                                            <a href="#">
+                                                <img src="./images/book12.png" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="product__name">
+                                            <a href="#">The World of Abstract Art</a>
+                                            <br><br>
+                                            
+                                        </td>
+                                        <td class="product__price">
+                                            <div class="price">
+                                                <span class="new__price">NPR. 1320</span>
+                                            </div>
+                                        </td>
+                                        <td class="product__quantity">
+                                            <div class="input-counter">
+                                                <div>
+                                                    <span class="minus-btn">
+                                                        <svg>
+                                                            <use xlink:href="./images/sprite.svg#icon-minus"></use>
+                                                        </svg>
+                                                    </span>
+                                                    <input type="text" min="1" value="1" max="10" class="counter-btn">
+                                                    <span class="plus-btn">
+                                                        <svg>
+                                                            <use xlink:href="./images/sprite.svg#icon-plus"></use>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="product__subtotal">
+                                            <div class="price">
+                                                <span class="new__price">NPR. 1320</span>
+                                            </div>
+                                            <a id="bin4" class="remove__cart-item">
+                                                <svg>
+                                                    <use xlink:href="./images/sprite.svg#icon-trash"></use>
+                                                </svg>
+                                                <script>
+                                                    $('#bin4').on('click', function(){
+                                                        Swal.fire({
+                                                            title: 'Are you sure?',
+                                                            icon: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Yes, delete it!'
+                                                            }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                Swal.fire(
+                                                                'Deleted!',
+                                                                'Your file has been deleted.',
+                                                                'success'
+                                                                )
+                                                            }
+                                                            })
+                                                    });
+                                                  </script>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="cart-btns">
+                            <div class="continue__shopping">
+                                <a id="helper" href="allproducts.html">Continue Shopping</a>
+                            </div>
+                            <div class="check__shipping">
+                                <input type="checkbox" checked>
+                                <span>Shipping(+100 Rs)</span>
+                            </div>
+                        </div>
+
+                        <div class="cart__totals">
+                            <h3>Cart Totals</h3>
+                            <ul>
+                                <li>
+                                    Subtotal
+                                    <span class="new__price">NRP. 6180</span>
+                                </li>
+                                <li>
+                                    Shipping
+                                    <span>NRP. 100</span>
+                                </li>
+                                <li>
+                                    Total
+                                    <span class="new__price">NRP. 6280</span>
+                                </li>
+                            </ul>
+                            <a id="ordernow" href="#helper">ORDER</a>
+                            <script>
+                                $('#ordernow').on('click', function(){
+                                    Swal.fire(
+                                        'Product Ordered!',
+                                        'We will be in your door steps within 6-hours!',
+                                        'success'
+                                        )
+                                });
+                              </script>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facility Section -->
+        <section class="facility__section section" id="facility">
+            <div class="container">
+                <div class="facility__contianer">
+                    <div class="facility__box">
+                        <div class="facility-img__container">
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-airplane"></use>
+                            </svg>
+                        </div>
+                        <p>FREE SHIPPING WORLD WIDE</p>
+                    </div>
+
+                    <div class="facility__box">
+                        <div class="facility-img__container">
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-credit-card-alt"></use>
+                            </svg>
+                        </div>
+                        <p>100% MONEY BACK GUARANTEE</p>
+                    </div>
+
+                    <div class="facility__box">
+                        <div class="facility-img__container">
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-credit-card"></use>
+                            </svg>
+                        </div>
+                        <p>MANY PAYMENT GATWAYS</p>
+                    </div>
+
+                    <div class="facility__box">
+                        <div class="facility-img__container">
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-headphones"></use>
+                            </svg>
+                        </div>
+                        <p>24/7 ONLINE SUPPORT</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="section footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer-top__box">
+                    <h3>Follow Us</h3>
+                    <a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-google fa-2x" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-pinterest-p fa-2x" aria-hidden="true"></i></a>
+                </div>
+                <div class="footer-top__box">
+                    <h3>KNOW US MORE</h3>
+                    <a id="dispabt" href="#" target="_parent">About Us</a>
+                    <script>
+                      $('#dispabt').on('click', function(){
+                        Swal.fire({
+                              title: 'We are online book sellers, we will get your desired book any where inside NEPAL, please login and order.'
+                            })
+                      });
+                    </script>
+                    <a id="disppriv" href="#">Privacy Policy</a>
+                    <script>
+                      $('#disppriv').on('click', function(){
+                        Swal.fire({
+                            title: 'Your data is safe with us do not worry!',
+                            allowOutsideClick: () => {
+                              const popup = Swal.getPopup()
+                              popup.classList.remove('swal2-show')
+                              setTimeout(() => {
+                                popup.classList.add('animate__animated', 'animate__headShake')
+                              })
+                              setTimeout(() => {
+                                popup.classList.remove('animate__animated', 'animate__headShake')
+                              }, 500)
+                              return false
+                            }
+                          })
+                      });
+                    </script>
+                    <a id="dispterco" href="#">Terms & Conditions</a>
+                    <script>
+                      $('#dispterco').on('click', function(){
+                          Swal.fire({
+                            title: 'Product will be delivered in time, receive call while our staff contact you!',
+                            allowOutsideClick: () => {
+                              const popup = Swal.getPopup()
+                              popup.classList.remove('swal2-show')
+                              setTimeout(() => {
+                                popup.classList.add('animate__animated', 'animate__headShake')
+                              })
+                              setTimeout(() => {
+                                popup.classList.remove('animate__animated', 'animate__headShake')
+                              }, 500)
+                              return false
+                            }
+                          })
+                      });
+                    </script>
+                    
+                  </div>
+                <div class="footer-top__box">
+                    <h3>MY ACCOUNT</h3>
+                    <a id="acc" href="#">My Account</a>
+                    <script>
+                        $('#acc').on('click', function(){
+                            Swal.fire({
+                                title: '<strong>Account Details</strong>',
+                                icon: 'info',
+                                html:
+                                    'Username:<b>Bhuwan Pandit</b>, ' +
+                                    'Password:<b>P@ssw0rd</b>, ' +
+                                    'Contact:<b>9843197848</b>',
+                                showCloseButton: true,
+                                showCancelButton: true,
+                                focusConfirm: false,
+                                confirmButtonText:
+                                    '<i class="fa fa-thumbs-up"></i> Great!',
+                                confirmButtonAriaLabel: 'Thumbs up, great!',
+                                
+                                })
+                        });
+                      </script>
+                    <a href="/cart.html">My Cart</a>
+                    <a href="/home.html#newsletter">Newsletter</a>
+                   
+                </div>
+                <div class="footer-top__box">
+                    <h3>CONTACT US</h3>
+                    <div>
+                        <span>
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-location"></use>
+                            </svg>
+                        </span>
+                        Tarakeshowr-23, Manamiju, Kathmandu, Nepal (6400)
+                    </div>
+                    <div>
+                        <span>
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-envelop"></use>
+                            </svg>
+                        </span>
+                        np03S200067@heraldcollege.edu.np
+                    </div>
+                    <div>
+                        <span>
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-phone"></use>
+                            </svg>
+                        </span>
+                        +977-9843197848
+                    </div>
+                    <div>
+                        <span>
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-paperplane"></use>
+                            </svg>
+                        </span>
+                        Gongabu, Kathmandu, Nepal
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="footer-bottom__box">
+
+            </div>
+            <div class="footer-bottom__box">
+
+            </div>
+        </div>
+        </div>
+    </footer>
+
+
+    <a href="#header" class="goto-top scroll-link">
+        <svg>
+            <use xlink:href="./images/sprite.svg#icon-arrow-up"></use>
+        </svg>
+    </a>
+
+
+    <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/products.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/slider.js"></script>
+</body>
+
+</html>

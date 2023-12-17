@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+ 
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css
+">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <title>READ-!T, About Book</title>
+</head>
+
+<body>
+  <header id="header" class="header">
+    <div class="navigation">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav__hamburger">
+            <svg>
+              <use xlink:href="./images/sprite.svg#icon-menu"></use>
+            </svg>
+          </div>
+
+          <div class="nav__logo">
+            <a href="/" class="scroll-link">
+              READ-<span style="color: #eb0028;">!</span>T
+            </a>
+          </div>
+
+          <div class="nav__menu">
+            <div class="menu__top">
+              <span class="nav__category">READ-!T</span>
+              <a href="#" class="close__toggle">
+                <svg>
+                  <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                </svg>
+              </a>
+            </div>
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#header" class="nav__link scroll-link">Home</a>
+              </li>
+              <li class="nav__item">
+                <a href="#category" class="nav__link scroll-link">Category</a>
+              </li>
+              <li class="nav__item">
+                <a href="#news" class="nav__link scroll-link">Blog</a>
+              </li>
+              <li class="nav__item">
+                <a href="#contact" class="nav__link scroll-link">Contact</a>
+              </li>
+              <li class="nav__item">
+                <a href="/books.html" target="_blank" class="nav__link">Books</a>
+              </li>
+              <li class="nav__item">
+                <a href="/home.html" target="_blank" id="signinpop" class="nav__link ">SignIn</a>
+                <script>
+                  $('#signinpop').on('click',function(){
+                  Swal.fire({
+                          title: 'Login to Your Account',
+                          html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+                          <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+                          showCancelButton: true,
+                          confirmButtonText: 'Sign in',
+                          focusConfirm: false,
+                          preConfirm: () => {
+                            const login = Swal.getPopup().querySelector('#login').value
+                            const password = Swal.getPopup().querySelector('#password').value
+                            if (!login || !password) {
+                              Swal.showValidationMessage(`Please enter login and password`)
+                            }
+                            return { login: login, password: password }
+                          }
+                        }).then((result) => {
+                          Swal.fire(`
+                            Login: ${result.value.login}
+                            Password: ${result.value.password}
+                          `.trim())
+                        })
+                    });
+                </script>
+              </li>
+              <li class="nav__item">
+                <a href="/signup.html" target="_blank" class="nav__link ">SignUp</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav__icons">
+            
+
+            <a id="wrong" href="#" class="icon__item">
+              <svg class="icon__search">
+                <use xlink:href="./images/sprite.svg#icon-search"></use>
+              </svg>
+              <script>
+                $('#wrong').on('click', function(){
+                  Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        footer: '<b>You can not search at the moment!</b>'
+                      })
+                });
+              </script>
+            </a>
+
+            
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="page__title-area">
+      <div class="container">
+        <div class="page__title-container">
+          <ul class="page__titles">
+            <li>
+              <a href="/">
+                <svg>
+                  <use xlink:href="./images/sprite.svg#icon-home"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="page__title">Futurama -by Michael Douglas Jr.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <!-- Products Details -->
+      <section class="section product-details__section">
+        <div class="product-detail__container">
+          <div class="product-detail__left">
+            <div class="details__container--left">
+              
+              <div class="product__picture" id="product__picture">
+                <!-- <div class="rect" id="rect"></div> -->
+                <div class="picture__container">
+                  <img src="./images/dispbook9.jpg" id="pic" />
+                </div>
+              </div>
+              <div class="zoom" id="zoom"></div>
+            </div>
+
+            <div class="product-details__btn">
+              <a id="loginfirst" class="add" href="#">
+                <span>
+                  <svg>
+                    <use xlink:href="./images/sprite.svg#icon-cart-plus"></use>
+                  </svg>
+                </span>
+                ADD TO BAG</a>
+                <script>
+                  $('#loginfirst').on('click', function(){
+                      Swal.fire({
+                        title: 'Please Login to add product to cart.',
+                        allowOutsideClick: () => {
+                          const popup = Swal.getPopup()
+                          popup.classList.remove('swal2-show')
+                          setTimeout(() => {
+                            popup.classList.add('animate__animated', 'animate__headShake')
+                          })
+                          setTimeout(() => {
+                            popup.classList.remove('animate__animated', 'animate__headShake')
+                          }, 500)
+                          return false
+                        }
+                      })
+                  });
+                </script>
+              <a id="loginfirst1" class="buy" href="#">
+                <span>
+                  <svg>
+                    <use xlink:href="./images/sprite.svg#icon-credit-card"></use>
+                  </svg>
+                </span>
+                BUY NOW
+              </a>
+              <script>
+                $('#loginfirst1').on('click', function(){
+                    Swal.fire({
+                      title: 'Please Login to add product to cart.',
+                      allowOutsideClick: () => {
+                        const popup = Swal.getPopup()
+                        popup.classList.remove('swal2-show')
+                        setTimeout(() => {
+                          popup.classList.add('animate__animated', 'animate__headShake')
+                        })
+                        setTimeout(() => {
+                          popup.classList.remove('animate__animated', 'animate__headShake')
+                        }, 500)
+                        return false
+                      }
+                    })
+                });
+              </script>
+            </div>
+          </div>
+
+          <div class="product-detail__right">
+            <div class="product-detail__content">
+              <h3>Futurama</h3>
+              <div class="price">
+                <span class="new__price">NPR. 2800</span>
+              </div>
+              <div class="product__review">
+                
+                <a href="#" class="rating__quatity">253 reviews</a>
+              </div>
+              <p>
+                Futurama is essentially a workplace sitcom, the plot of which revolves around the Planet Express interplanetary delivery company and its employees, a small group that largely fails to conform to future society.
+              </p>
+              <div class="product__info-container">
+                <ul class="product__info">
+                  <li class="select">
+                    </div>
+                  </li>
+                  <li>
+
+                    <div class="input-counter">
+                      <span>Quantity:</span>
+                      <div>
+                        <span class="minus-btn">
+                          <svg>
+                            <use xlink:href="./images/sprite.svg#icon-minus"></use>
+                          </svg>
+                        </span>
+                        <input type="text" min="1" value="1" max="10" class="counter-btn">
+                        <span class="plus-btn">
+                          <svg>
+                            <use xlink:href="./images/sprite.svg#icon-plus"></use>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <span>Subtotal:</span>
+                    <a href="#" class="new__price">NPR. 2800</a>
+                  </li>
+                  <li>
+                    <span>Writer:</span>
+                    <a style="color: #eb0028;">Michael Douglas Jr.</a>
+                  </li>
+                  <li>
+                    <span>Book Category:</span>
+                    <a style="color: #eb0028;">Biography & Memoir</a>
+                  </li>
+                  <li>
+                    <span>Availability:</span>
+                    <a style="color: #eb0028;" class="in-stock">In Stock (22 copies left)</a>
+                  </li>
+                </ul>
+                <div class="product-info__btn">
+                  <a href="#">
+                    <span>
+                      <svg>
+                        <use xlink:href="./images/sprite.svg#icon-truck"></use>
+                      </svg>
+                    </span>&nbsp;
+                    SHIPPING
+                  </a>
+                  <a href="#">
+                    <span>
+                      <svg>
+                        <use xlink:href="./images/sprite.svg#icon-envelope-o"></use>
+                      </svg>&nbsp;
+                    </span>
+                    ASK ABOUT THIS PRODUCT
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-detail__bottom">
+          <div class="title__container tabs">
+
+            <div class="section__titles category__titles ">
+              <div class="section__title detail-btn active" data-id="description">
+                <span class="dot"></span>
+                <h1 class="primary__title">Description</h1>
+              </div>
+            </div>
+
+
+            <div class="section__titles">
+              <div class="section__title detail-btn" data-id="shipping">
+                <span class="dot"></span>
+                <h1 class="primary__title">Shipping Details</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail__content">
+            <div class="content active" id="description">
+              <p>While" The Lake "shows off many of the features that have made Banana Yoshimoto famous--a cast of vivid and quirky characters, simple yet nuanced prose, a tight plot with an upbeat pace--it's also one of the most darkly mysterious books she's ever written.
+              </p>
+              <h2>Summary of the Book</h2>
+              <p>It tells the tale of a young woman who moves to Tokyo after the death of her mother, hoping to get over her grief and start a career as a graphic artist. She finds herself spending too much time staring out her window, though ... until she realizes she's gotten used to seeing a young man across the street staring out his window, too.
+
+                They eventually embark on a hesitant romance, until she learns that he has been the victim of some form of childhood trauma. Visiting two of his friends who live a monastic life beside a beautiful lake, she begins to piece together a series of clues that lead her to suspect his experience may have had something to do with a bizarre religious cult.
+                
+                With its echoes of the infamous, real-life Aum Shinrikyo cult (the group that released poison gas in the Tokyo subway system), "The Lake" unfolds as the most powerful novel Banana Yoshimoto has written.</p>
+            </div>
+            <div class="content" id="shipping">
+              <h3>Returns Policy</h3>
+              <p>You may return most new, unopened items within 30 days of delivery for a full refund. We'll also pay
+                the return shipping costs if the return is a result of our error (you received an incorrect or defective
+                item, etc.).</p>
+              <p>You should expect to receive your refund within four weeks of giving your package to the return
+                shipper, however, in many cases you will receive a refund more quickly. This time period includes the
+                transit time for us to receive your return from the shipper (5 to 10 business days), the time it takes
+                us to process your return once we receive it (3 to 5 business days), and the time it takes your bank to
+                process our refund request (5 to 10 business days).
+              </p>
+              <p>If you need to return an item, simply login to your account, view the order using the 'Complete
+                Orders' link under the My Account menu and click the Return Item(s) button. We'll notify you via
+                e-mail of your refund once we've received and processed the returned item.
+              </p>
+              <h3>Shipping</h3>
+              <p>We can ship to virtually any address in the world. Note that there are restrictions on some products,
+                and some products cannot be shipped to international destinations.</p>
+              <p>When you place an order, we will estimate shipping and delivery dates for you based on the
+                availability of your items and the shipping options you choose. Depending on the shipping provider you
+                choose, shipping date estimates may appear on the shipping quotes page.
+              </p>
+              <p>Please also note that the shipping rates for many items we sell are weight-based. The weight of any
+                such item can be found on its detail page. To reflect the policies of the shipping companies we use, all
+                weights will be rounded up to the next full pound.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="section footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer-top__box">
+          <h3>FOLLOW US ON</h3>
+          <div style="margin: 2px;">
+          <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-google fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-pinterest-p fa-2x" aria-hidden="true"></i>
+          <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+        </div>
+        </div>
+        <div class="footer-top__box">
+          <h3>KNOW US MORE</h3>
+          <a id="dispabt" href="#" target="_parent">About Us</a>
+          <script>
+            $('#dispabt').on('click', function(){
+              Swal.fire({
+                    title: 'We are online book sellers, we will get your desired book any where inside NEPAL, please login and order.'
+                  })
+            });
+          </script>
+          <a id="disppriv" href="#">Privacy Policy</a>
+          <script>
+            $('#disppriv').on('click', function(){
+              Swal.fire({
+                  title: 'Please Login to check about Privacy Policy of the Company.',
+                  allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                      popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                      popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                  }
+                })
+            });
+          </script>
+          <a id="dispterco" href="#">Terms & Conditions</a>
+          <script>
+            $('#dispterco').on('click', function(){
+                Swal.fire({
+                  title: 'Please Login to check about Terms & Conditions of the Company.',
+                  allowOutsideClick: () => {
+                    const popup = Swal.getPopup()
+                    popup.classList.remove('swal2-show')
+                    setTimeout(() => {
+                      popup.classList.add('animate__animated', 'animate__headShake')
+                    })
+                    setTimeout(() => {
+                      popup.classList.remove('animate__animated', 'animate__headShake')
+                    }, 500)
+                    return false
+                  }
+                })
+            });
+          </script>
+          
+        </div>
+
+        <div class="footer-top__box">
+          <h3>All Rights Reserved to</h3>
+          <h1 ><span style="color: #eb0028;">READ-</span>!<span style="color: #eb0028;"></span>T</span></h1>
+        </div>
+        <div class="footer-top__box">
+          <h3>CONTACT US</h3>
+          <div>
+            <span>
+              <svg>
+                <use xlink:href="./images/sprite.svg#icon-location"></use>
+              </svg>
+            </span>
+            Tarakeshowr-23, Manamiju, Kathmandu, Nepal (6400)
+          </div>
+          <div>
+            <span>
+              
+
+              <svg>
+                <use xlink:href="./images/sprite.svg#icon-envelop"></use>
+              </svg>
+            </span>
+            np03S200067@heraldcollege.edu.np
+          </div>
+          <div>
+            <span>
+              <svg>
+                <use xlink:href="./images/sprite.svg#icon-phone"></use>
+              </svg>
+            </span>
+            +977-9843197848
+          </div>
+          <div>
+            <span>
+              <svg>
+                <use xlink:href="./images/sprite.svg#icon-paperplane"></use>
+              </svg>
+            </span>
+            Gongabu, Kathmandu, Nepal
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer-bottom__box">
+
+      </div>
+      <div class="footer-bottom__box">
+
+      </div>
+    </div>
+    </div>
+  </footer>
+
+  <!-- End Footer -->
+
+  <!-- Shortcut -->
+
+  <a href="#header" class="goto-top scroll-link">
+    <svg>
+      <use xlink:href="./images/sprite.svg#icon-arrow-up"></use>
+    </svg>
+  </a>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="./js/products.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/slider.js"></script>
+</body>
+
+</html>
