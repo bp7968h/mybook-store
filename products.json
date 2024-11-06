@@ -1,0 +1,210 @@
+{
+    "products": [{
+            "id": 6,
+            "title": "The Kings of Drugs",
+            "image": "./images/book1.jpg",
+            "price": 1760,
+            "category": "Featured Products",
+            "by":"Nora Barrett"
+        },
+
+        {
+            "id": 3,
+            "title": "The Imperfections of Memory",
+            "image": "./images/book2.jpg",
+            "price": 1750,
+            "category": "Special Products",
+            "by":"Angelina Aludo"
+        },
+        {
+            "id": 4,
+            "title": "Embodied Hope",
+            "image": "./images/book3.jpg",
+            "price": 1900,
+            "category": "Special Products",
+            "by":"Kelly M. Kapic"
+        },
+        {
+            "id": 8,
+            "title": "Higher Education",
+            "image": "./images/book4.jpg",
+            "price": 1600,
+            "category": "Featured Products",
+            "by":"Ronan Alvarado"
+        },
+        {
+            "id": 5,
+            "title": "Dummy Book",
+            "image": "./images/book5.jpg",
+            "price": 1850,
+            "category": "Special Products",
+            "by":"Bhuwan Pandit"
+        },
+
+        {
+            "id": 7,
+            "title": "Positive Thoughts",
+            "image": "./images/book6.jpg",
+            "price": 1450,
+            "category": "Featured Products",
+            "by":"Jennifer Conner"
+        },
+
+
+        {
+            "id": 10,
+            "title": "Enchantment",
+            "image": "./images/book7.jpg",
+            "price": 1300,
+            "category": "Special Products",
+            "by":"Guy Kawasaki"
+        },
+        {
+            "id": 11,
+            "title": "Animal Science",
+            "image": "./images/book8.jpg",
+            "price": 2300,
+            "category": "Special Products",
+            "by":"Alexander Wilson"
+        },
+        {
+            "id": 13,
+            "title": "Futurama",
+            "image": "./images/book9.jpg",
+            "price": 2800,
+            "category": "Trending Products",
+            "by":"Michael Douglas Jr."
+        },
+        {
+            "id": 12,
+            "title": "The Lake",
+            "image": "./images/book10.jpg",
+            "price": 1250,
+            "category": "Special Products",
+            "by":"Banana Yoshimoto"
+        },
+
+        {
+            "id": 14,
+            "title": "Leave The World Behind",
+            "image": "./images/book11.jpg",
+            "price": 1550,
+            "category": "Trending Products",
+            "by":"Rumaan Alam"
+        },
+        {
+            "id": 9,
+            "title": "The World of Abstract Art",
+            "image": "./images/book12.png",
+            "price": 1320,
+            "category": "Special Products",
+            "by":"Emily Robbins"
+        },
+        {
+            "id": 15,
+            "title": "The Waiting",
+            "image": "./images/book14.jpg",
+            "price": 1305,
+            "category": "Trending Products",
+            "by":"Anna Jameson"
+        },
+        {
+            "id": 16,
+            "title": "Boston-My Blissful Winter",
+            "image": "./images/book15.jpg",
+            "price": 1400,
+            "category": "Special Products",
+            "by":"Alain Briottet"
+        },
+        {
+            "id": 17,
+            "title": "Queenie",
+            "image": "./images/book16.jpg",
+            "price": 2550,
+            "category": "Trending Products",
+            "by":"Candice Carty-Williams"
+        },
+        {
+            "id": 2,
+            "title": "Water & Flame",
+            "image": "./images/book17.jpg",
+            "price": 3300,
+            "category": "Special Products",
+            "by":"Alejandra Vega"
+        },
+        {
+            "id": 18,
+            "title": "Old House on the Hills",
+            "image": "./images/book18.png",
+            "price": 1630,
+            "category": "Trending Products",
+            "by":"Norma Anderson"
+        },
+        {
+            "id": 20,
+            "title": "Fame of Thrones",
+            "image": "./images/book19.jpg",
+            "price": 2270,
+            "category": "Special Products",
+            "by":"Georger R.R. Martin"
+        },
+        {
+            "id": 19,
+            "title": "Know My Name",
+            "image": "./images/Slider-Image1.jpg",
+            "price": 2250,
+            "category": "Trending Products",
+            "by":"Chanel Miller"
+        },
+        {
+            "id": 1,
+            "title": "A Life",
+            "image": "./images/Slider-Image2.jpg",
+            "price": 1265,
+            "category": "Special Products",
+            "by":"Ruth Bader Ginsburg"
+        },
+        {
+            "id": 24,
+            "title": "Imaginary Friend",
+            "image": "./images/book20.jpg",
+            "price": 1500,
+            "category": "Featured Products",
+            "by":"Stephen Chbosky"
+        },
+        {
+            "id": 21,
+            "title": "Bug Music",
+            "image": "./images/book21.jpg",
+            "price": 950,
+            "category": "Trending Products",
+            "by":"David Rothenberg"
+        },
+
+        {
+            "id": 25,
+            "title": "Torn",
+            "image": "./images/book22.jpg",
+            "price": 4450,
+            "category": "Special Products",
+            "by":"Paul Clarke"
+        },
+        {
+            "id": 22,
+            "title": "The Hypocrite World",
+            "image": "./images/book23.jpg",
+            "price": 1460,
+            "category": "Trending Products",
+            "by":"Sophia Hill"
+        },
+        {
+            "id": 23,
+            "title": "A Children's Bible",
+            "image": "./images/book24.jpg",
+            "price": 1600,
+            "category": "Featured Products",
+            "by":"Lydia Millet"
+        }
+
+    ]
+}
