@@ -1,0 +1,42 @@
+name: Minify and Deploy to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      # Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      # Install necessary packages for minification
+      - name: Install minification tools
+        run: |
+          npm install uglify-js clean-css-cli -g
+      
+      # Minify CSS
+      - name: Minify CSS
+        run: |
+          cleancss styles.css -o styles.css
+      
+      # Minify JavaScript
+      - name: Minify JavaScript
+        run: |
+          uglifyjs js/index.js -o js/index.js
+          uglifyjs js/products.js -o js/products.js
+          uglifyjs js/slider.js -o js/slider.js
+      
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
