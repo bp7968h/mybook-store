@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css
 ">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script async src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
@@ -60,15 +60,16 @@
                 <a href="#contact" class="nav__link scroll-link">Contact</a>
               </li>
               <li class="nav__item">
-                <a href="/books.html" target="_blank" class="nav__link">Books</a>
+                <a href="/books.html" class="nav__link">Books</a>
               </li>
               <li class="nav__item">
-                <a href="/home.html" target="_blank" id="signinpop" class="nav__link ">SignIn</a>
+                <a href="#" id="signinpop" class="nav__link ">SignIn</a>
                 <script>
                   $('#signinpop').on('click',function(){
                   Swal.fire({
                           title: 'Login to Your Account',
-                          html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+                          html: `<p>Use username and password as admin</p>
+                          <input type="text" id="login" class="swal2-input" placeholder="Username">
                           <input type="password" id="password" class="swal2-input" placeholder="Password">`,
                           showCancelButton: true,
                           confirmButtonText: 'Sign in',
@@ -82,16 +83,24 @@
                             return { login: login, password: password }
                           }
                         }).then((result) => {
-                          Swal.fire(`
-                            Login: ${result.value.login}
-                            Password: ${result.value.password}
-                          `.trim())
-                        })
-                    });
+                          if (result.value && result.value.login == 'admin' && result.value.password == 'admin') {
+                            Swal.fire({
+                              title: "Good job!",
+                              text: "Logged in successfully!",
+                              icon: "success"
+                            }).then(() => {
+                            // Redirect to home.html after successful login
+                              window.location.href = "/home.html";
+                            });
+                          } else {
+                            Swal.fire({
+                              title: "Failed",
+                              text: "Invalid username or password!",
+                              icon: "error"
+                            });
+                          }}
+                  )});
                 </script>
-              </li>
-              <li class="nav__item">
-                <a href="/signup.html" target="_blank" class="nav__link ">SignUp</a>
               </li>
             </ul>
           </div>
@@ -761,38 +770,6 @@
           </div>
         </div>
       </section>
-
-      <section class="category__section section" id="category">
-        <div class="tab__list">
-          <div class="title__container tabs">
-            <div class="section__titles category__titles">
-              <div class="section__title filter-btn" data-id="Trending Products">
-                <span class="dot"></span>
-                <h1 class="primary__title">Biography & Memoir</h1>
-              </div>
-            </div>
-
-            <div class="section__titles">
-              <div class="section__title filter-btn" data-id="Special Products">
-                <span class="dot"></span>
-                <h1 class="primary__title">Action & Adventure</h1>
-              </div>
-            </div>
-
-            <div class="section__titles">
-              <div class="section__title filter-btn" data-id="Featured Products">
-                <span class="dot"></span>
-                <h1 class="primary__title">Self Development & Motivation</h1>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="category__container" data-aos="fade-up" data-aos-duration="1200">
-          <div class="category__center"></div>
-        </div>
-    </div>
-    </section>
 
       <section class="category__section section" id="category">
         <div class="tab__list">
